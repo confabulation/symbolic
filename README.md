@@ -6,7 +6,7 @@ Implementation of different sentence completion architectures using
 , module hierarchies and multiconfabulation using a symbol-level model of modules and knowledge links. 
 
 This implementation is initially the product of a master thesis by Bernard
-Paulus and Cédric Snauwaert
+Paulus and Cédric Snauwaert, relased under the GPL - see LICENSE.txt .
 
 Each of the directories here correspond to an eclipse project. See 
 Setup, build and run with Eclipse
