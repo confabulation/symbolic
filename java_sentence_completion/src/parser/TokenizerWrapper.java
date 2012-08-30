@@ -20,7 +20,7 @@ package parser;
 /**
  * Wrapper class to transform a Tokenizer into a MultiTokenizer
  * 
- * @author bernard
+ * @author bernard and cedric
  */
 public class TokenizerWrapper implements MultiTokenizer {
 

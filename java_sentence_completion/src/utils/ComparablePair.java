@@ -23,7 +23,7 @@ package utils;
 import sparse.Pair;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class ComparablePair<A extends Comparable<A>, B extends Comparable<B>>

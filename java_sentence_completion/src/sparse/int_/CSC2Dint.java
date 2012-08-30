@@ -32,7 +32,7 @@ import sparse.PairOfInts;
 /**
  * Compressed sparse column matrix
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class CSC2Dint extends Matrix2Dint {

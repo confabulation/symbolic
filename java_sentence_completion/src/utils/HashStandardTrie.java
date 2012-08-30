@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * Generic Trie implementation based on hashtables
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class HashStandardTrie<E> {
@@ -145,7 +145,7 @@ public class HashStandardTrie<E> {
 	/**
 	 * Node for the Trie
 	 * 
-	 * @author bernard
+	 * @author bernard and cedric
 	 * 
 	 */
 	protected class Node {

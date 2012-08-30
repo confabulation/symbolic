@@ -20,7 +20,7 @@ package confabulation;
 /**
  * An interface to any sentence completion class
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public interface SentenceCompletionIF {

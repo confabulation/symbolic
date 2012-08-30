@@ -22,7 +22,7 @@ import java.io.IOException;
 import parser.Tokenizer;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class Multiconfabulation1 extends FullMeshConfabulation {

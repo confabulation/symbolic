@@ -22,7 +22,7 @@ import java.util.Map.Entry;
 /**
  * HashMap compatible C++-like Pair
  * 
- * @author arturh@stackoverflow.com + edits by bernard
+ * @author arturh@stackoverflow.com + edits by bernard and cedric
  * 
  * @param <A>
  * @param <B>

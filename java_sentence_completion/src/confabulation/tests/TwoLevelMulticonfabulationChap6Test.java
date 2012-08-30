@@ -39,7 +39,7 @@ import confabulation.Module;
 import confabulation.TwoLevelMulticonfabulationChap6;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class TwoLevelMulticonfabulationChap6Test extends

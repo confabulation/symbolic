@@ -37,7 +37,7 @@ import org.junit.Test;
  * </p>
  * TODO implement test!!!!
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class TwoLevelSimpleConfabulationTestSinglePossibleAnswer {

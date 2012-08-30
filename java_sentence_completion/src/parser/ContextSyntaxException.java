@@ -26,7 +26,7 @@ import java.util.regex.PatternSyntaxException;
 import utils.ArrayTools;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  *
  */
 public class ContextSyntaxException extends PatternSyntaxException {

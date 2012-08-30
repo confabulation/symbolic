@@ -53,7 +53,7 @@ import utils.RuntimeIOException;
  * index to perform a confabulation is the index of the target module.
  * </p>
  * 
- * @author bernard
+ * @author bernard and cedric
  */
 public abstract class ConfabulationStub implements SentenceCompletionIF {
 

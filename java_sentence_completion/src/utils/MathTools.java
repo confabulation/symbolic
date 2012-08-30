@@ -21,7 +21,7 @@
 package utils;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class MathTools {

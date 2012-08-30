@@ -29,7 +29,7 @@ import utils.MathTools;
 /**
  * The two level architecture for word completion, with simple confabulation
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class TwoLevelSimpleConfabulation extends ForwardConfabulation {

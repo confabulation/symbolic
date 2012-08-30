@@ -23,7 +23,7 @@ package parser;
 /**
  * arrange, duplicate, re-represent symbols for the learning
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public interface SymbolOrganizer {

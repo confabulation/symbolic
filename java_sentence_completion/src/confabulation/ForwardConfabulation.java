@@ -25,7 +25,7 @@ import utils.ArrayTools;
  * A naive confabulation experiment only using links in the forward direction of
  * the sentence
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class ForwardConfabulation extends ConfabulationStub {

@@ -24,7 +24,7 @@ import utils.ArrayTools;
 /**
  * basic symbol parsing
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public abstract class Tokenizer {

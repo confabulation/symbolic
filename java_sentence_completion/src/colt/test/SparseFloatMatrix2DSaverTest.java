@@ -36,7 +36,7 @@ import colt.SparseFloatMatrix2DSaver;
 import colt.SparseFloatMatrix2DSaver.FormatErrorException;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  *
  */
 public class SparseFloatMatrix2DSaverTest {

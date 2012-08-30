@@ -25,7 +25,7 @@ import java.util.Arrays;
 import utils.ArrayTools;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  *
  */
 public class WordSymbols implements SymbolOrganizer {

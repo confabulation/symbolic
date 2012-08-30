@@ -39,7 +39,7 @@ import utils.ArrayTools;
  * the given sentence.
  * </p>
  * 
- * @author bernard
+ * @author bernard and cedric
  */
 public class ContextTokenizer extends Tokenizer {
 	public static final String CONTEXT_CENTER = "";

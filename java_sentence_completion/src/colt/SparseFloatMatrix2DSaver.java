@@ -45,7 +45,7 @@ import cern.colt.matrix.tfloat.impl.SparseFloatMatrix2D;
 /**
  * Class for matrix IO
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class SparseFloatMatrix2DSaver {

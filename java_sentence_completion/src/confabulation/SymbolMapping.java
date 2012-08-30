@@ -23,7 +23,7 @@ import java.util.Set;
 /**
  * define a mappring between symbols and list indexes
  * 
- * @author cedric
+ * @author bernard and cedric
  */
 public class SymbolMapping {
 

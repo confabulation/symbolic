@@ -25,7 +25,7 @@ import parser.Tokenizer;
  * multiconfabulation like the book, but on a single line
  * TODO
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class Multiconfabulation2 extends Multiconfabulation1 {

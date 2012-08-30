@@ -27,7 +27,7 @@ import sparse.Pair;
 /**
  * Dictionnary of keys sparse matrix
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class DOK2Dfloat extends Matrix2Dfloat {

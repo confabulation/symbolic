@@ -35,7 +35,7 @@ import org.junit.Test;
  */
 
 /**
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class MainTest {

@@ -22,7 +22,7 @@ import java.util.Arrays;
 /**
  * Tools for 2D arrays
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class ArrayTools2D {

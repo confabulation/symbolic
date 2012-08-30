@@ -26,7 +26,7 @@ import java.util.Vector;
 /**
  * some utilities
  * 
- * @author bernard paulus
+ * @author bernard paulus and cedric snauwaert
  */
 public class ArrayTools {
 

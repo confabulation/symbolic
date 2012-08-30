@@ -22,7 +22,7 @@ package utils;
  * catches the exception only if he really wants to.
  * 
  * It is good practice to keep the throws clause
- * @author bernard
+ * @author bernard and cedric
  */
 public class RuntimeIOException extends RuntimeException {
 

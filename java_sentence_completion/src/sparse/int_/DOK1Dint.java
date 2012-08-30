@@ -28,7 +28,7 @@ import java.util.Set;
 /**
  * DOK vector
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class DOK1Dint {

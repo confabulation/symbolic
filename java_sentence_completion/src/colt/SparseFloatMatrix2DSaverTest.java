@@ -35,7 +35,7 @@ import cern.colt.matrix.tfloat.impl.SparseFloatMatrix2D;
 import colt.SparseFloatMatrix2DSaver.FormatErrorException;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  *
  */
 public class SparseFloatMatrix2DSaverTest {

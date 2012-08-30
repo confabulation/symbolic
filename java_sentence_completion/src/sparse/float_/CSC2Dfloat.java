@@ -29,7 +29,7 @@ import sparse.PairOfInts;
 /**
  * Compressed sparse column matrix
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class CSC2Dfloat extends Matrix2Dfloat {

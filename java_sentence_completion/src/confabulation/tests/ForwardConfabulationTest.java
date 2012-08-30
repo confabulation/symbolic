@@ -36,7 +36,7 @@ import confabulation.ConfabulationStub;
 import confabulation.ForwardConfabulation;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class ForwardConfabulationTest {

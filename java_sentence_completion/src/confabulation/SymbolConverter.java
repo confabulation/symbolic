@@ -25,7 +25,7 @@ import utils.ArrayTools;
 /**
  * Convert between the different representations of a symbol
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class SymbolConverter {

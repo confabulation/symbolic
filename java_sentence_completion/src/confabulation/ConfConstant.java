@@ -20,7 +20,7 @@ package confabulation;
 /**
  * This class contains the different constants for a confabulation experiment
  * 
- * @author cedric
+ * @author bernard and cedric
  */
 public class ConfConstant {
 

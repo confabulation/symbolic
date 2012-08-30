@@ -45,7 +45,7 @@ import javax.swing.JFileChooser;
 /**
  * Parse file, putting a single sentence on a single line
  * 
- * @author bernard TODO: deal with all the cases of dots used in the middle of a
+ * @author bernard and cedric TODO: deal with all the cases of dots used in the middle of a
  *         sentence: abbreviations, numbers, urls, ...
  */
 public class Main {

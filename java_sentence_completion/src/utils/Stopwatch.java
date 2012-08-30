@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * A millisecond stopwatch, with some {@link #stats(boolean)}
  * 
- * @author bernard
+ * @author bernard and cedric
  */
 public class Stopwatch {
 

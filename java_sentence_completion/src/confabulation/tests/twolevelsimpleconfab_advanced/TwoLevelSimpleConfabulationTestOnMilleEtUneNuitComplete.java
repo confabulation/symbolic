@@ -35,7 +35,7 @@ import org.junit.Test;
 import confabulation.TwoLevelSimpleConfabulation;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class TwoLevelSimpleConfabulationTestOnMilleEtUneNuitComplete {

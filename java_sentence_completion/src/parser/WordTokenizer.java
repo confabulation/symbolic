@@ -23,7 +23,7 @@ package parser;
 /**
  * Trivial tokenizer: returns the words
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class WordTokenizer extends Tokenizer {

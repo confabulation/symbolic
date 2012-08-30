@@ -27,7 +27,7 @@ import utils.ArrayTools;
 /**
  * Two-level multiconfabulation as described in the book, chapter 6, appendix A.
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class TwoLevelMulticonfabulationChap6 extends

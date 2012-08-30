@@ -31,7 +31,7 @@ import org.junit.Test;
 import utils.MathTools;
 
 /**
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class MathToolsTest {

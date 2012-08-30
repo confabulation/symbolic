@@ -39,7 +39,7 @@ import utils.HashStandardTrie;
  * </p>
  * TODO support context module
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class MultiLevelOrganizer implements SymbolOrganizer {

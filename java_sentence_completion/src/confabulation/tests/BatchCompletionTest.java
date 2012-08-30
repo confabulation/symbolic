@@ -35,7 +35,7 @@ import confabulation.TwoLevelSimpleConfabulation;
 /**
  * Completes many sentences at once
  * 
- * @author bernard
+ * @author bernard and cedric
  * 
  */
 public class BatchCompletionTest {
