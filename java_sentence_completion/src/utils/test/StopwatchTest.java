@@ -17,14 +17,15 @@
 
 package utils.test;
 
-import static org.junit.Assert.*;
-
 import org.junit.Test;
 
 import utils.Stopwatch;
 
 public class StopwatchTest {
 
+	/**
+	 * A stupid test function that never fails
+	 */
 	@Test
 	public void test() {
 		Stopwatch sw = new Stopwatch();

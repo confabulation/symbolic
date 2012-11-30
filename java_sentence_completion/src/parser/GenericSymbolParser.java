@@ -77,7 +77,7 @@ public class GenericSymbolParser {
 					+ tok + ") is null");
 		}
 		this.file = file;
-		if (!(new File(file).exists() && new File(file).canRead())) {
+		if (!new File(file).canRead()) {
 			throw new FileNotFoundException(file + " doesn't exists");
 		}
 		this.tok = tok;

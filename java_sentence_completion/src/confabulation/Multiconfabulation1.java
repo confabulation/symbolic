@@ -20,6 +20,7 @@ package confabulation;
 import java.io.IOException;
 
 import parser.Tokenizer;
+import parser.WordTokenizer;
 
 /**
  * @author bernard and cedric
@@ -28,6 +29,11 @@ import parser.Tokenizer;
 public class Multiconfabulation1 extends FullMeshConfabulation {
 
 	protected int n_multiconf;
+	
+	public Multiconfabulation1(int n_modules, String filename)
+			throws IOException {
+		this(n_modules, filename, new WordTokenizer());
+	}
 
 	public Multiconfabulation1(int n_modules, String filename, Tokenizer tok)
 			throws IOException {

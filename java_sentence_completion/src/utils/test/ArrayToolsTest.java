@@ -24,7 +24,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import utils.ArrayTools;
-import utils.MathTools;
 
 public class ArrayToolsTest {
 

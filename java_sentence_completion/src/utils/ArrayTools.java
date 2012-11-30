@@ -95,6 +95,26 @@ public class ArrayTools {
 	}
 
 	/**
+	 * Check if elem is in list
+	 * 
+	 * @param elem
+	 * @param list
+	 *            can be null
+	 * @return true if elem is in list, false otherwise
+	 */
+	public static boolean in(char elem, char... list) {
+		if (list == null) {
+			return false;
+		}
+		for (int i : list) {
+			if (elem == i) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	/**
 	 * python's 'in' operator
 	 * 
 	 * <br/>
@@ -182,7 +202,7 @@ public class ArrayTools {
 		}
 		return Arrays.copyOf(tmp, n);
 	}
-	
+
 	/**
 	 * indexes of each element not equal to elem
 	 * 
@@ -229,7 +249,9 @@ public class ArrayTools {
 	 *            non-null, keys.length == values.length
 	 * @param values
 	 *            non-null, keys.length == values.length
-	 * @return
+	 * @return a list of the values whose corresponding entry in <em>keys</em>
+	 *         is equal to <em>key</em>. Returns the empty list when no
+	 *         corresponding entry is found;
 	 */
 	public static <K, V> V[] get_map(K key, K[] keys, V[] values) {
 		if (keys.length != values.length) {
@@ -294,7 +316,7 @@ public class ArrayTools {
 		}
 		return c;
 	}
-	
+
 	/**
 	 * @param elem
 	 * @param array

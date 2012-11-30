@@ -1,3 +1,5 @@
+package preprocessor;
+
 /**
  * Copyright 2011-2012 Bernard Paulus and Cédric Snauwaert
  * 
@@ -38,7 +40,7 @@ import org.junit.Test;
  * @author bernard and cedric
  * 
  */
-public class MainTest {
+public class PreprocessorTest {
 
 	/**
 	 * executed before each test
@@ -59,7 +61,7 @@ public class MainTest {
 	}
 
 	/**
-	 * Test method for {@link Main#main(java.lang.String[])}.
+	 * Test method for {@link Preprocessor#main(java.lang.String[])}.
 	 */
 	@Ignore
 	@Test
@@ -68,7 +70,7 @@ public class MainTest {
 	}
 
 	/**
-	 * Test method for {@link Main#find_abbreviations(java.io.File)}.
+	 * Test method for {@link Preprocessor#find_abbreviations(java.io.File)}.
 	 */
 	@Ignore
 	@Test
@@ -77,7 +79,7 @@ public class MainTest {
 	}
 
 	/**
-	 * Test method for {@link Main#find_potential_abbreviations(java.io.File)}.
+	 * Test method for {@link Preprocessor#find_potential_abbreviations(java.io.File)}.
 	 */
 	@Ignore
 	@Test
@@ -87,7 +89,7 @@ public class MainTest {
 
 	/**
 	 * Test method for
-	 * {@link Main#find_simple_regex_abbreviations(java.io.File)}.
+	 * {@link Preprocessor#find_simple_regex_abbreviations(java.io.File)}.
 	 * 
 	 * @throws IOException
 	 *             should no happen
@@ -109,7 +111,7 @@ public class MainTest {
 		// TODO: write counter examples
 		w.write("Hello World. :)");
 		w.close();
-		Set<String> result = Main.find_simple_regex_abbreviations(f);
+		Set<String> result = Preprocessor.find_simple_regex_abbreviations(f);
 		Set<String> fails = new HashSet<String>();
 		for (String[] abbrv : abbreviations_results) {
 			if (! result.remove(abbrv[1])){
@@ -132,7 +134,7 @@ public class MainTest {
 	}
 
 	/**
-	 * Test method for {@link Main#in(java.lang.Object, T[])}.
+	 * Test method for {@link Preprocessor#in(java.lang.Object, T[])}.
 	 */
 	@Ignore
 	@Test
