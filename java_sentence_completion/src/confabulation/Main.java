@@ -45,7 +45,7 @@ public class Main {
 			"TwoLevelMulticonfabulationChap6", //
 	};
 
-	private static Class[] classes = {//
+	private static Class<?>[] classes = {//
 	ForwardConfabulation.class, //
 			FullMeshConfabulation.class, //
 			Multiconfabulation1.class, //
