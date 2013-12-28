@@ -17,7 +17,10 @@
 
 package confabulation;
 
-import java.io.BufferedReader;
+import gui.GuiConsole;
+import io.BufferedReader;
+import io.LineStream;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -67,6 +70,8 @@ public class Main {
 		if (args.length == 0) {
 			// TODO spawn graphical mode
 			usage(0);
+			GuiConsole io = new GuiConsole();
+			shell(null /* TODO */, TwoLevelMulticonfabulationChap6.class, io.in, io.out, io.out);
 		}
 
 		int eopt = ArrayTools.find_equal("--", args);
@@ -89,7 +94,7 @@ public class Main {
 		for (int i = 0; i < eopt; i++){
 			if (args[i].startsWith(opt_algo)) {
 				String name = args[i].substring(opt_algo.length());
-				Class[] algos = ArrayTools.get_map(name, class_names, classes);
+				Class<?>[] algos = ArrayTools.get_map(name, class_names, classes);
 
 				if (algos.length == 0) {
 					err.println(name
@@ -126,7 +131,8 @@ public class Main {
 			usage(1);
 		}
 		
-		shell(get_preprocessed_file(corpus), algo);
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		shell(get_preprocessed_file(corpus), algo, in, System.out, err);
 	}
 
 	/**
@@ -138,7 +144,7 @@ public class Main {
 	public static void usage(int exit) {
 		final int termwidth = 80;
 		String msg = "GNU GPL, (c) Bernard Paulus and Cédric Snauwaert\n";
-		msg += "ARGUMENTS: [--help] [--algo=NAME] [--] [CORPUS_FILE]\n";
+		msg += "ARGUMENTS: [--help] [--algo=NAME] [--] CORPUS_FILE\n";
 		msg += StringTools.fold(termwidth, "builds an architecture, learn"
 				+ "and present a sentence completion shell,"
 				+ " using confabulation\n");
@@ -218,10 +224,10 @@ public class Main {
 		return corpus.getAbsolutePath();
 	}
 
-	public static void shell(String preprocessed_file, Class<?> algo) {
+	public static void shell(String preprocessed_file, Class<?> algo, LineStream in, PrintStream out, PrintStream err) {
 
 		int n_modules = 10; // 10
-		System.out.println("max module : " + ConfConstant.Nmax);
+		out.println("max module : " + ConfConstant.Nmax);
 
 		long starttime = System.currentTimeMillis();
 		long endtime = System.currentTimeMillis();
@@ -241,39 +247,36 @@ public class Main {
 		} catch (IllegalAccessException e) {
 			throw new RuntimeException("rethrown",e);
 		} catch (InvocationTargetException e) {
-			System.err.println("Error: target constructors must take (int, String) as parameters");
+			err.println("Error: target constructors must take (int, String) as parameters");
 			e.printStackTrace();
 			System.exit(-1);
 		} catch (NoSuchMethodException e) {
-			System.err.println("Error: target constructors must take (int, String) as parameters");
+			err.println("Error: target constructors must take (int, String) as parameters");
 			e.printStackTrace();
 			System.exit(-1);
 		}
 		endtime = System.currentTimeMillis();
 		print_mem_usage();
-		System.out.println("total time used for "
+		out.println("total time used for "
 				+ fconfab.getClass().getName() + " " + (endtime - starttime)
 				+ "ms");
-		System.out.println();
+		out.println();
 
-		System.out
+		out
 				.println("Enter the beginning of a line of text and the program\nwill try to find the next word.");
-		System.out.println("Commands are :\n/quit : exit program");
-		System.out
+		out.println("Commands are :\n/quit : exit program");
+		out
 				.println("/setK Value : set value of K (needed input knowledge links)");
-		System.out.println("/expectation : set expectation to true/false");
-		System.out
+		out.println("/expectation : set expectation to true/false");
+		out
 				.println("/setMaxExpectation Value : set maximum value of expectation to print");
-		System.out
+		out
 				.println("/setPosition Value : the module who will undergo confabulation will be the Value after the end of the sentence");
 
 		boolean expectation = false;
 		int K = 1;
 		int maxExpectation = 5;
 		int position = 1;
-
-		InputStreamReader converter = new InputStreamReader(System.in);
-		BufferedReader in = new BufferedReader(converter);
 
 		String CurLine = ""; // Line read from standard in
 		while (true) {
@@ -283,20 +286,20 @@ public class Main {
 				if (CurLine == null || CurLine.equals("/quit")) { // exits on
 																	// EOF
 																	// (ctrl+D)
-					System.out.println("Exiting!");
+					out.println("Exiting!");
+					out.close();
 					break;
 				} else if (CurLine.equals("/expectation")) {
 					if (expectation == false)
 						expectation = true;
 					else
 						expectation = false;
-					System.out
-							.println("---Notice---\nExpectation has been set to "
+					out.println("---Notice---\nExpectation has been set to "
 									+ expectation);
 				} else if (CurLine.startsWith("/setK")) {
 					String[] cut = CurLine.split(" ");
 					if (cut.length != 2)
-						System.out.println("---Notice---\nBad input");
+						out.println("---Notice---\nBad input");
 					else {
 						int tempK = Integer.parseInt(cut[1]);
 						if (tempK >= -1 && tempK <= ConfConstant.Nmax) {
@@ -304,33 +307,32 @@ public class Main {
 							// forward confab
 							fconfab.setK(K);
 
-							System.out
-									.println("---Notice---\nK has been changed to "
+							out.println("---Notice---\nK has been changed to "
 											+ K);
 						} else {
-							System.err.println("Invalid K. Must be in [-1, "
+							err.println("Invalid K. Must be in [-1, "
 									+ ConfConstant.Nmax + "]");
 						}
 					}
 				} else if (CurLine.startsWith("/setMaxExpectation")) {
 					String[] cut = CurLine.split(" ");
 					if (cut.length != 2)
-						System.out.println("---Notice---\nBad input");
+						out.println("---Notice---\nBad input");
 					else {
 						int tempK = Integer.parseInt(cut[1]);
 						maxExpectation = tempK;
-						System.out
+						out
 								.println("---Notice---\nmaxExpectation has been changed to "
 										+ maxExpectation);
 					}
 				} else if (CurLine.startsWith("/setPosition")) {
 					String[] cut = CurLine.split(" ");
 					if (cut.length != 2)
-						System.out.println("---Notice---\nBad input");
+						out.println("---Notice---\nBad input");
 					else {
 						int tempK = Integer.parseInt(cut[1]);
 						position = tempK;
-						System.out
+						out
 								.println("---Notice---\nPosition of module to undergo confabulation has been changed to "
 										+ position + " after end of input line");
 					}
@@ -344,45 +346,45 @@ public class Main {
 						if (expectation) {
 							String[] expectations = fconfab.next_expectation(
 									symbols, -1);
-							System.out.println("Expectations:");
+							out.println("Expectations:");
 							for (String str : expectations) {
-								System.out.println(" - " + str);
+								out.println(" - " + str);
 							}
 						} else {
 							String next_word = fconfab.next_word(symbols, -1);
-							System.out.println(fconfab.getClass().getName()
+							out.println(fconfab.getClass().getName()
 									+ ": " + next_word);
 						}
 						endtime = System.currentTimeMillis();
-						System.out.println("time taken for "
+						out.println("time taken for "
 								+ fconfab.getClass().getName() + " : "
 								+ (endtime - starttime));
 					} else {
-						System.out.println(check_argument);
+						out.println(check_argument);
 					}
 
 					// try {
 					// String[] answer = conf.find_next_word(CurLine,
 					// expectation, maxExpectation, position);
 					// for (int i = 0; i < answer.length; i++) {
-					// System.out.println(" - " + answer[i]);
+					// out.println(" - " + answer[i]);
 					// }
-					// System.out.println("");
-					// System.out.println("next 3 words without multiconfabulation :\n"+conf.get_following_words(3,
+					// out.println("");
+					// out.println("next 3 words without multiconfabulation :\n"+conf.get_following_words(3,
 					// CurLine));
-					// starttime = System.currentTimeMillis();
+					// starttime = currentTimeMillis();
 					// conf.multiconf(3, CurLine);
-					// endtime = System.currentTimeMillis();
-					// System.out.println("time taken for multiconfabulation : "+(endtime-starttime));
-					// starttime = System.currentTimeMillis();
+					// endtime = currentTimeMillis();
+					// out.println("time taken for multiconfabulation : "+(endtime-starttime));
+					// starttime = currentTimeMillis();
 					// conf.multiconf2(3, CurLine);
-					// endtime = System.currentTimeMillis();
-					// System.out.println("time taken for multiconfabulation 2 : "+(endtime-starttime));
+					// endtime = currentTimeMillis();
+					// out.println("time taken for multiconfabulation 2 : "+(endtime-starttime));
 					// //conf.find_several_words(2, CurLine);
 					// } catch (ConfabulationException e) {
 					// // TODO Auto-generated catch block
 					// //e.printStackTrace();
-					// System.out.println(e);
+					// out.println(e);
 					//
 					// }
 

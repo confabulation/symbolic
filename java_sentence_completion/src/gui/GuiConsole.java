@@ -1,13 +1,13 @@
 package gui;
 
+import io.LineStream;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.InterruptedIOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
-import java.util.LinkedList;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
@@ -76,8 +76,8 @@ public class GuiConsole extends JPanel implements ActionListener,
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		String s = tfin.getText() + "\n";
-		ta.append("> " + s);
+		String s = tfin.getText();
+		ta.append("> " + s  + "\n");
 		in.add(s);
 		tfin.setText("");
 	}
@@ -95,14 +95,15 @@ public class GuiConsole extends JPanel implements ActionListener,
 		in.close();
 	}
 
-	protected class GuiIn extends InputStream {
+	protected class GuiIn implements LineStream {
 
-		protected LinkedBlockingQueue<Byte> buf;
 		protected boolean closed;
+		protected LinkedBlockingQueue<String> q;
 
-		protected GuiIn() {
+		// TODO: provide a way to transmit the close()
+		public GuiIn() {
 			closed = false;
-			buf = new LinkedBlockingQueue<Byte>();
+			q = new LinkedBlockingQueue<String>();
 		}
 
 		@Override
@@ -111,52 +112,33 @@ public class GuiConsole extends JPanel implements ActionListener,
 		}
 
 		/**
-		 * add strings to read in the InputStream. Arguments are ignored if the
-		 * stream is closed.
+		 * queue one line to be consumed later
 		 * 
 		 * @param s
-		 *            a string. Ignored if null
+		 *            the string. Ignored if null
 		 */
-		protected void add(String s) {
-			if (closed || s == null) {
+		public void add(String s) {
+			if (s == null) {
 				return;
 			}
-			byte[] bs = s.getBytes();
-			LinkedList<Byte> lbs = new LinkedList<Byte>();
-			for (byte b : bs) {
-				lbs.add(b);
-			}
-			buf.addAll(lbs);
+			q.add(s);
 		}
 
 		@Override
-		public int available() {
-			return buf.size();
-		}
-
-		@Override
-		public synchronized int read() throws InterruptedIOException {
-			if (closed && buf.isEmpty()) {
-				return -1;
+		public synchronized String readLine() throws InterruptedIOException {
+			if (closed) {
+				return null;
 			}
-			Byte b = 0;
-
-			while (true) {
-				try {
-					
-					if ((b = buf.poll(100, TimeUnit.MILLISECONDS)) == null) {
-						if (closed && buf.isEmpty())
-							return -1;
-					} else
-						break;
-
-				} catch (InterruptedException e) { 
-					// TODO: close and return 
-					throw new InterruptedIOException("interrupted: "
-							+ e.getMessage());
+			try {
+				String ret = null;
+				while (ret == null && !closed) {
+					ret = q.poll(100, TimeUnit.MILLISECONDS);
 				}
+				return ret;
+			} catch (InterruptedException e) {
+				throw new InterruptedIOException(
+						"Interrupted: original stack trace:\n" + e.toString());
 			}
-			return b;
 		}
 
 	}
@@ -214,16 +196,11 @@ public class GuiConsole extends JPanel implements ActionListener,
 		guiConsole.out.println("Welcome to GuiConsole.");
 
 		System.out.println("Reading from GuiConsole");
-		int chr = -1;
-		while ((chr = guiConsole.in.read()) != -1) {
-			System.out.write(chr);
+
+		String line = null;
+		while ((line = guiConsole.in.readLine()) != null) {
+			System.out.println(line);
 		}
-		// String line;
-		// BufferedReader buf = new BufferedReader(new InputStreamReader(
-		// guiConsole.in), 1);
-		// while ((line = buf.readLine()) != null) {
-		// System.out.println(line);
-		// }
 		System.out.println("End of read.");
 	}
 }
