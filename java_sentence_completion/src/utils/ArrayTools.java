@@ -364,14 +364,14 @@ public class ArrayTools {
 			return -1;
 		}
 		if (elem == null) {
-			for (int i = 0; i < ts.length; i++) {
-				if (ts[i] != null) {
+			for (int i = 0; i < array.length; i++) {
+				if (array[i] != null) {
 					return i;
 				}
 			}
 		} else {
 			for (int i = 0; i < array.length; i++) {
-				if (! elem.equals(array[i]) {
+				if (! elem.equals(array[i])) {
 					return i;
 				}
 			}
