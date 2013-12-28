@@ -363,9 +363,17 @@ public class ArrayTools {
 		if (array == null) {
 			return -1;
 		}
-		for (int i = 0; i < array.length; i++) {
-			if (array[i] != elem) {
-				return i;
+		if (elem == null) {
+			for (int i = 0; i < ts.length; i++) {
+				if (ts[i] != null) {
+					return i;
+				}
+			}
+		} else {
+			for (int i = 0; i < array.length; i++) {
+				if (! elem.equals(array[i]) {
+					return i;
+				}
 			}
 		}
 		return -1;
