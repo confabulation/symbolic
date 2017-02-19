@@ -1,6 +1,6 @@
 package com.github.confabulation.symbolic.gui;
 
-import io.LineStream;
+import com.github.confabulation.symbolic.utils.io.LineStream;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

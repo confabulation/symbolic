@@ -29,6 +29,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Random;
 
+import com.github.confabulation.symbolic.colt.SparseFloatMatrix2DSaver;
 import org.junit.Test;
 
 import cern.colt.matrix.tfloat.impl.SparseFloatMatrix2D;

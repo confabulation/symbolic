@@ -18,8 +18,6 @@
 package com.github.confabulation.symbolic.confabulation;
 
 import com.github.confabulation.symbolic.gui.GuiConsole;
-import io.BufferedReader;
-import io.LineStream;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -37,6 +35,8 @@ import com.github.confabulation.symbolic.preprocessor.Preprocessor;
 import com.github.confabulation.symbolic.utils.ArrayTools;
 import com.github.confabulation.symbolic.utils.RuntimeIOException;
 import com.github.confabulation.symbolic.utils.StringTools;
+import com.github.confabulation.symbolic.utils.io.BufferedReader;
+import com.github.confabulation.symbolic.utils.io.LineStream;
 
 public class Main {
 

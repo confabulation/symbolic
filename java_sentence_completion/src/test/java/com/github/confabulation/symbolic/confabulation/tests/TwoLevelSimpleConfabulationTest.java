@@ -215,7 +215,7 @@ public class TwoLevelSimpleConfabulationTest extends
 		String[][][] expectedss = {
 				//
 				{ { syc.string_symbol(symbolss[0]) }, {} }, // symbols[0]
-				ArrayTools.zip(symbolss[1]), // symbols[1]
+				ArrayTools.<String>zip(symbolss[1]), // symbols[1]
 				{ { "I", syc.string_symbol(symbolss[0]) } } // symbols[2]
 		};
 
